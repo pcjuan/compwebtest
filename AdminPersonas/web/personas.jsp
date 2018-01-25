@@ -38,7 +38,7 @@
                                 <td>${p.clave}</td>
                                 <td>${p.activo?"Si":"No"}</td>
                                 <td>
-                                    <button name="boton" value="${p.rut}"
+                                    <button name="btn" value="${p.rut}"
                                             class="btn-floating blue">
                                         <i class="material-icons">
                                             edit

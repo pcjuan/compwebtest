@@ -61,7 +61,7 @@ public class PersonaController extends HttpServlet {
 
         Persona p = this.service.buscar(boton);
         request.setAttribute("persona", p);
-        request.getRequestDispatcher("editarPersona.jsp").forward(request, response);
+        request.getRequestDispatcher("editarPersonas.jsp").forward(request, response);
 
     }
 
@@ -94,6 +94,9 @@ public class PersonaController extends HttpServlet {
 
             if (p == null) {
                 request.setAttribute("msg", "Hubo un error al iniciar sesion :(");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            } else if (!p.isActivo()) {
+                request.setAttribute("msg", "Usuario deshabilitado, consulte a su administrador :(");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             } else if (p.getPerfil().equalsIgnoreCase("admin")) {
                 request.getSession().setAttribute("admin", p);
